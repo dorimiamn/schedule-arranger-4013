@@ -28,6 +28,9 @@ const app = new Hono();
 
 app.use(async (c, next) => {
   const { CSRF_TRUSTED_ORIGIN } = env(c);
+  const { PORT } = env(c);
+  console.log(`CSRF_TRUSTED_ORIGIN: ${CSRF_TRUSTED_ORIGIN}`)
+  console.log(`Server running At http://localhost:${PORT}/`);
   const handler = csrf({
     origin: CSRF_TRUSTED_ORIGIN,
   });
